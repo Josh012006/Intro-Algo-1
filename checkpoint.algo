@@ -1,0 +1,46 @@
+ALGORITHM checkpoint
+VAR
+    count1 : INTEGER := 0;
+    count2 : INTEGER := 0;
+    count3 : INTEGER := 0;
+
+    sentence : STRING;
+    i : INTEGER := 0;
+    a : CHAR := sentence[i];
+BEGIN
+//On stocke la phrase
+    Read(sentence);
+
+//Maintenant pour compter le nombre de caractères
+
+    WHILE (a <> '.') DO
+        count1 := count1 + 1;
+        i := i + 1;
+    END_WHILE
+    //J'ajoute maintenant le point
+    count1 := count1 + 1;
+
+    Write(count1);
+
+//Pour compter le nombre de mots qui est égal au nombre d'espaces plus 1
+    FOR j FROM 0 TO (count1 - 1) STEP 1  DO
+        //Je vérifie si le caractère est un espace et qu'il est seul
+        IF (sentence[j] = ' ' AND (sentence[j + 1]) <> ' ') THEN
+            count2 := count2 + 1;
+        END_IF
+    END_FOR
+    //J'ajoute 1
+    count2 := count2 + 1;
+
+    Write(count2);
+
+//Pour compter le nombre de voyelles
+    FOR j FROM 0 TO (count1 - 1) STEP 1  DO
+        //Je vérifie si le caractère est une voyelle
+        IF (sentence[j].toLowerCase() = 'a' OR sentence[j].toLowerCase() = 'e' OR sentence[j].toLowerCase() = 'i' OR sentence[j].toLowerCase() = 'o' OR sentence[j].toLowerCase() = 'u' OR sentence[j].toLowerCase() = 'y') THEN
+            count3 := count3 + 1;
+        END_IF
+    END_FOR
+    Write(count3);
+
+END
